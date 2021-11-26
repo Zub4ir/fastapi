@@ -1,6 +1,6 @@
 from fastapi.responses import StreamingResponse
 from fastapi import APIRouter
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 import pandas as pd
 import asyncio, io, time
 
@@ -11,11 +11,10 @@ some_routes_1 = APIRouter()
 
 @some_routes_1.get('/', tags=['Section 1'])
 async def some_routes_1_index():
+
+    # going here takes you to the docs
     
-    return JSONResponse([
-        {'app_creator': settings.APP_CREATOR}, 
-        {'message': 'Check out /docs'}]
-        )
+    return RedirectResponse('/docs')
 
 
 @some_routes_1.get('/section-1/test-jsn', tags=['Section 1'])

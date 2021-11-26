@@ -5,7 +5,9 @@ from fastapi import FastAPI
 fast_description = """
 ## Hello
 
-This the FastAPI! FastAPI documentation [here](https://fastapi.tiangolo.com)
+This is FastAPI. FastAPI documentation [here](https://fastapi.tiangolo.com).
+
+I've coded the index url "/" to redirect to this docs page [/docs](/docs). Docs are also available on [/redoc](/redoc).
 
 """
 
