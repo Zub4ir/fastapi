@@ -1,0 +1,25 @@
+version: '2.1'
+
+services:
+
+  fastapi:
+    container_name: fast_app
+    restart: always
+    build:
+      context: ./fast_app
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    command: gunicorn -w 6 -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker app:application
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - flask_app
